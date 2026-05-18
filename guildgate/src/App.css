@@ -12,7 +12,9 @@
 .input-password-icon,
 .select-icon-container,
 .select-arrow-container,
-.class-selector-unchecked {
+.class-selector-unchecked,
+.footer-app-name,
+.footer-app-version {
 	color: var(--color-text-placeholder);
 }
 
