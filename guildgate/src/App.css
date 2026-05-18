@@ -2,7 +2,8 @@
 @import "tailwindcss";
 
 .input-field,
-.select-field {
+.select-field,
+.class-selector-unchecked {
 	background-color: var(--color-form-input-background);
 	border-color: var(--color-border-normal);
 }
@@ -10,8 +11,14 @@
 .input-icon-container,
 .input-password-icon,
 .select-icon-container,
-.select-arrow-container {
+.select-arrow-container,
+.class-selector-unchecked {
 	color: var(--color-text-placeholder);
+}
+
+.class-selector-checked {
+	border-color: var(--color-primary);
+	color: var(--color-primary);
 }
 
 /* Per nascondere le icone predefinite di date e time */
