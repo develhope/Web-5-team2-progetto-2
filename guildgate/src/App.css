@@ -1,20 +1,32 @@
 @import "./index.css";
 @import "tailwindcss";
 
-.input-field {
+.input-field,
+.select-field {
+	background-color: var(--color-form-input-background);
 	border-color: var(--color-border-normal);
 }
 
 .input-icon-container,
-.input-password-icon {
+.input-password-icon,
+.select-icon-container,
+.select-arrow-container {
 	color: var(--color-text-placeholder);
 }
 
-/* Per nascondere le icone predefinite */
+/* Per nascondere le icone predefinite di date e time */
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="date"]::-webkit-inner-spin-button,
 input[type="time"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-inner-spin-button {
 	display: none;
 	-webkit-appearance: none;
+}
+
+/* Per nascondere l'icona predefinita del campo select */
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-image: none;
 }

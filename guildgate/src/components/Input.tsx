@@ -16,7 +16,7 @@ export const Input = ({
 	showPasswordToggle,
 	onTogglePassword,
 }: InputProps) => {
-	// Cambia l'icona in base al campo input
+	// Cambia l'icona in base al name del campo input
 	const getInputIcon = () => {
 		const iconClass = "h-5 w-5";
 		switch (name) {
