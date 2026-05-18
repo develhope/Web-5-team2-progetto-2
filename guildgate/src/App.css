@@ -39,3 +39,7 @@ select {
 	appearance: none;
 	background-image: none;
 }
+
+.party-tag {
+	border-color: var(--color-border-subtle);
+}
