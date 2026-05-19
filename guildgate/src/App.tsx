@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Button } from "./button";
 
 export default function App() {
@@ -9,3 +10,12 @@ export default function App() {
     </>
   );
 }
+=======
+import "./App.css";
+
+function App() {
+	return <></>;
+}
+
+export default App;
+>>>>>>> ebe2dec136c30cf012c2382c2ee416ea3a6565d5
