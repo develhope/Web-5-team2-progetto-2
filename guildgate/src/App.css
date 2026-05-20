@@ -43,3 +43,14 @@ select {
 .party-tag {
 	border-color: var(--color-border-subtle);
 }
+
+.primaryButton {
+	background-color: var(--color-primary);
+	color: var(--color-text-button);
+	border-color: var(--color-border-subtle);
+}
+
+.secondaryButton {
+	background-color: var(--color-background);
+	border-color: var(--color-border-subtle);
+}
