@@ -5,6 +5,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
 	showPasswordToggle?: boolean;
 	onTogglePassword?: () => void;
+	onChange?: () => void;
 };
 
 export const Input = ({
@@ -15,6 +16,7 @@ export const Input = ({
 	value = "",
 	showPasswordToggle,
 	onTogglePassword,
+	onChange,
 }: InputProps) => {
 	// Cambia l'icona in base al name del campo input
 	const getInputIcon = () => {
@@ -44,6 +46,7 @@ export const Input = ({
 					className="input-field w-full pl-10 pr-10 py-2 border rounded-md text-sm"
 					placeholder={placeholder}
 					value={value}
+					onChange={onChange}
 				/>
 				{showPasswordToggle && (
 					<button

@@ -3,6 +3,7 @@ import { Globe, Shield, ChevronDown } from "lucide-react";
 
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	label: string;
+	onChange?: () => void;
 };
 
 type SelectOption = {
@@ -25,7 +26,7 @@ const DEFAULT_OPTIONS: Record<string, SelectOption[]> = {
 	],
 };
 
-export const Select = ({ label, name, value = "" }: SelectProps) => {
+export const Select = ({ label, name, value = "", onChange }: SelectProps) => {
 	// Cambia l'icona in base al name della select
 	const getSelectIcon = () => {
 		const iconClass = "h-5 w-5";
@@ -44,7 +45,12 @@ export const Select = ({ label, name, value = "" }: SelectProps) => {
 			<label className="select-label block mb-2 text-lg">{label}</label>
 			<div className="relative flex items-center">
 				<div className="select-icon-container absolute left-3 flex items-center">{getSelectIcon()}</div>
-				<select name={name} className="select-field w-full pl-10 pr-10 py-2 border rounded-md text-sm" value={value}>
+				<select
+					name={name}
+					className="select-field w-full pl-10 pr-10 py-2 border rounded-md text-sm"
+					value={value}
+					onChange={onChange}
+				>
 					{/* Option usata come placeholder */}
 					<option value="" disabled hidden>
 						{name === "objective" ? "Select an objective for your party" : "Pick your server"}
