@@ -26,7 +26,7 @@ const DEFAULT_OPTIONS: Record<string, SelectOption[]> = {
 	],
 };
 
-export const Select = ({ label, name, value = "", onChange }: SelectProps) => {
+export const Select = ({ label, name, value = "", className, onChange }: SelectProps) => {
 	// Cambia l'icona in base al name della select
 	const getSelectIcon = () => {
 		const iconClass = "h-5 w-5";
@@ -41,7 +41,7 @@ export const Select = ({ label, name, value = "", onChange }: SelectProps) => {
 	const selectOptions = name ? DEFAULT_OPTIONS[name] : [];
 
 	return (
-		<div className="select-container">
+		<div className={"select-container " + className}>
 			<label className="select-label block mb-2 text-lg">{label}</label>
 			<div className="relative flex items-center">
 				<div className="select-icon-container absolute left-3 flex items-center">{getSelectIcon()}</div>
