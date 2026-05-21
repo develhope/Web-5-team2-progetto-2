@@ -10,7 +10,7 @@ export const Button = ({ text, type = "button", buttonStyle, className, onClick 
 	return (
 		<button
 			type={type}
-			className={`w-full border rounded-md font-bold px-4 py-2 ${buttonStyle} ` + className}
+			className={`w-full border rounded-md font-bold px-4 py-2 ${buttonStyle} ${className}`}
 			onClick={onClick}
 		>
 			{text}

@@ -37,7 +37,7 @@ export const Input = ({
 	};
 
 	return (
-		<div className={"input-container " + className}>
+		<div className={`input-container ${className}`}>
 			<label className="input-label block mb-2 text-lg">{label}</label>
 			<div className="relative flex items-center">
 				<div className="input-icon-container absolute left-3 flex items-center">{getInputIcon()}</div>

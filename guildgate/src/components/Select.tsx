@@ -41,7 +41,7 @@ export const Select = ({ label, name, value = "", className, onChange }: SelectP
 	const selectOptions = name ? DEFAULT_OPTIONS[name] : [];
 
 	return (
-		<div className={"select-container " + className}>
+		<div className={`select-container ${className}`}>
 			<label className="select-label block mb-2 text-lg">{label}</label>
 			<div className="relative flex items-center">
 				<div className="select-icon-container absolute left-3 flex items-center">{getSelectIcon()}</div>
