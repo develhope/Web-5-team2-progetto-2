@@ -1,0 +1,34 @@
+[
+	{
+		"nickname": "ShadowBlade99",
+		"level": "42",
+		"server": "europe",
+		"avatar": "avatar-2",
+		"class": "tank",
+		"password": "password_1"
+	},
+	{
+		"nickname": "HealerQueen_Ly",
+		"level": "35",
+		"server": "america",
+		"avatar": "avatar-1",
+		"class": "druid",
+		"password": "password_2"
+	},
+	{
+		"nickname": "xX_DarkMage_Xx",
+		"level": "28",
+		"server": "europe",
+		"avatar": "avatar-4",
+		"class": "warrior",
+		"password": "hashed_password_3"
+	},
+	{
+		"nickname": "IronFistGareth",
+		"level": "55",
+		"server": "europe",
+		"avatar": "avatar-3",
+		"class": "assassin",
+		"password": "hashed_password_4"
+	}
+]

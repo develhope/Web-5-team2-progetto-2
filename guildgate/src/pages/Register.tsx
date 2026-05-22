@@ -7,6 +7,8 @@ import { Input } from "../components/Input";
 import { Select } from "../components/Select";
 import { FormErrorPopup } from "../components/FormErrorPopup";
 
+import mockUsers from "../data/mockUsers.json";
+
 export function Register() {
 	const DEFAULT_AVATAR = "avatar-1";
 	const DEFAULT_CLASS = "warrior";
@@ -16,7 +18,12 @@ export function Register() {
 
 	const [users, setUsers] = useState(() => {
 		const savedUsers = localStorage.getItem("users");
-		return savedUsers ? JSON.parse(savedUsers) : [];
+		if (savedUsers) {
+			return JSON.parse(savedUsers);
+		} else {
+			localStorage.setItem("users", JSON.stringify(mockUsers));
+			return mockUsers;
+		}
 	});
 
 	const [user, setUser] = useState({
