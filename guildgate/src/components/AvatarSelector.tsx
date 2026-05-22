@@ -1,9 +1,12 @@
-import { useState } from "react";
-
 type AvatarOptions = {
 	id: string;
 	alt: string;
 	imageUrl: string;
+};
+
+type AvatarSelectorProps = {
+	value: string;
+	onSelect: (avatarId: string) => void;
 };
 
 const options: AvatarOptions[] = [
@@ -34,16 +37,13 @@ const options: AvatarOptions[] = [
 	},
 ];
 
-export const AvatarSelector = () => {
-	// Soluzione temporanea per mostrare lo styling del checked
-	const [selectedOption, setSelectedOption] = useState<string>("avatar-1");
-
+export const AvatarSelector = ({ value, onSelect }: AvatarSelectorProps) => {
 	return (
 		<div className="avatar-container">
 			<label className="avatar-label block mb-2 text-lg">Avatar</label>
 			<div role="radio-group" className="flex flex-row w-full justify-between">
 				{options.map((option) => {
-					const isChecked = selectedOption === option.id;
+					const isChecked = value === option.id;
 					return (
 						<>
 							<button
@@ -51,12 +51,12 @@ export const AvatarSelector = () => {
 								type="button"
 								role="radio"
 								aria-checked={isChecked}
-								onClick={() => setSelectedOption(option.id)}
+								onClick={() => onSelect(option.id)}
 							>
 								<img
 									src={option.imageUrl}
 									alt={option.alt}
-									className={`w-full size-15 ${isChecked ? "grayscale-0" : "grayscale"}`}
+									className={`w-full size-14 ${isChecked ? "grayscale-0" : "grayscale"}`}
 								/>
 							</button>
 						</>

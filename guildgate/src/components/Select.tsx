@@ -1,9 +1,9 @@
-import type { SelectHTMLAttributes } from "react";
+import type { SelectHTMLAttributes, ChangeEvent } from "react";
 import { Globe, Shield, ChevronDown } from "lucide-react";
 
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	label: string;
-	onChange?: () => void;
+	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 type SelectOption = {
@@ -47,13 +47,13 @@ export const Select = ({ label, name, value = "", className, onChange }: SelectP
 				<div className="select-icon-container absolute left-3 flex items-center">{getSelectIcon()}</div>
 				<select
 					name={name}
-					className="select-field w-full pl-10 pr-10 py-2 border rounded-md text-sm"
+					className="select-field w-full pl-10 pr-10 py-2 border rounded-md text-xs"
 					value={value}
 					onChange={onChange}
 				>
 					{/* Option usata come placeholder */}
 					<option value="" disabled hidden>
-						{name === "objective" ? "Select an objective for your party" : "Pick your server"}
+						{name === "objective" ? "Select an objective for your party" : "Your region"}
 					</option>
 					{selectOptions.map((option) => (
 						<option key={option.value} value={option.value}>

@@ -8,6 +8,20 @@
 	border-color: var(--color-border-normal);
 }
 
+.register-form {
+	background-color: var(--color-accent-background);
+	border-color: var(--color-border-normal);
+}
+
+.sign-in-redirect {
+	color: var(--color-primary);
+}
+
+.error-popup-container {
+	background-color: var(--color-accent-background);
+	border-color: var(--color-primary);
+}
+
 .input-icon-container,
 .input-password-icon,
 .select-icon-container,
