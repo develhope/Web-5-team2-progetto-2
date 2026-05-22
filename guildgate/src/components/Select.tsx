@@ -1,29 +1,11 @@
 import type { SelectHTMLAttributes, ChangeEvent } from "react";
 import { Globe, Shield, ChevronDown } from "lucide-react";
 
+import { DEFAULT_OPTIONS } from "../data/selectOptions";
+
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	label: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-};
-
-type SelectOption = {
-	value: string;
-	label: string;
-};
-
-// Tutte le options per i campi select
-const DEFAULT_OPTIONS: Record<string, SelectOption[]> = {
-	server: [
-		{ value: "europe", label: "Europe" },
-		{ value: "america", label: "America" },
-		{ value: "asia", label: "Asia" },
-		{ value: "oceania", label: "Oceania" },
-	],
-	objective: [
-		{ value: "dwarves", label: "Dwarves' Mine" },
-		{ value: "falkor", label: "Falkor the Worldbreaker" },
-		{ value: "shadows", label: "The Dark Shadows" },
-	],
 };
 
 export const Select = ({ label, name, value = "", className, onChange }: SelectProps) => {

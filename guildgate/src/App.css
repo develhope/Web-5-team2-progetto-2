@@ -22,6 +22,26 @@
 	border-color: var(--color-primary);
 }
 
+.party-bottom-area {
+	background-color: var(--color-accent-background);
+}
+
+.joined-party,
+.created-party,
+.class-slots img {
+	border-color: var(--color-primary);
+}
+
+.available-party,
+.unavailable-party {
+	border-color: var(--color-border-normal);
+}
+
+.level-req,
+.slots-number {
+	color: var(--color-green-accent);
+}
+
 .input-icon-container,
 .input-password-icon,
 .select-icon-container,

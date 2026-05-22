@@ -1,5 +1,5 @@
 type PartyTagProps = {
-	title: string;
+	title?: string;
 };
 
 export const PartyTag = ({ title }: PartyTagProps) => {
