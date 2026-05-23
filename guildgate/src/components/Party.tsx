@@ -101,7 +101,7 @@ export const Party = ({
 					<img
 						src={objective?.imageUrl}
 						alt={objective?.alt}
-						className="absolute -z-1 w-full -top-15 object-cover opacity-30"
+						className="absolute -z-1 w-full -top-10 object-cover opacity-30"
 					/>
 				</div>
 				<div className="tag-wrapper flex gap-2 mx-3 mt-2">
