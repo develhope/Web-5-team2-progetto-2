@@ -8,12 +8,14 @@
 	border-color: var(--color-border-normal);
 }
 
-.register-form {
+.register-form,
+.login-form {
 	background-color: var(--color-accent-background);
 	border-color: var(--color-border-normal);
 }
 
-.sign-in-redirect {
+.sign-in-redirect,
+.register-redirect {
 	color: var(--color-primary);
 }
 
