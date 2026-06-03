@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { SelectOption } from "../data/selectOptions";
 import { Button } from "./Button";
 import { PartyTag } from "./PartyTag";
+import { X } from "lucide-react";
 
 type Class = "warrior" | "tank" | "assassin" | "archer" | "druid";
 
@@ -13,6 +14,8 @@ type PartyProps = {
 	partyStyle: "joined-party" | "created-party" | "available-party" | "unavailable-party";
 	joinedClasses: Class[];
 	partyDate: string | Date;
+	onPartyButtonClick?: () => void;
+	onDeletePartyClick?: () => void;
 };
 
 export const Party = ({
@@ -23,21 +26,45 @@ export const Party = ({
 	partyStyle,
 	joinedClasses,
 	partyDate,
+	onPartyButtonClick,
+	onDeletePartyClick,
 }: PartyProps) => {
 	const renderButtons = () => {
 		switch (partyStyle) {
 			case "joined-party":
-				return <Button text="Leave Party" buttonStyle="secondaryButton" className="text-xs"></Button>;
+				return (
+					<Button
+						text="Leave Party"
+						buttonStyle="secondaryButton"
+						className="text-xs"
+						onClick={onPartyButtonClick}
+					></Button>
+				);
 			case "created-party":
-				return <Button text="Edit Party" buttonStyle="primaryButton" className="text-xs"></Button>;
+				return (
+					<Button
+						text="Edit Party"
+						buttonStyle="primaryButton"
+						className="text-xs"
+						onClick={onPartyButtonClick}
+					></Button>
+				);
 			case "available-party":
-				return <Button text="Join Party" buttonStyle="primaryButton" className="text-xs"></Button>;
+				return (
+					<Button
+						text="Join Party"
+						buttonStyle="primaryButton"
+						className="text-xs"
+						onClick={onPartyButtonClick}
+					></Button>
+				);
 			case "unavailable-party":
 				return (
 					<Button
 						text="Join Party"
 						buttonStyle="secondaryButton"
-						className="text-xs opacity-50 pointer-events-none"
+						className="text-xs opacity-50"
+						onClick={onPartyButtonClick}
 					></Button>
 				);
 		}
@@ -80,6 +107,7 @@ export const Party = ({
 
 	const formatStaticDate = (dateInput: string | Date) => {
 		const date = new Date(dateInput);
+		const difference = date.getTime() - new Date().getTime();
 
 		// padStart aggiunge uno 0 se la cifra ha meno di 2 caratteri
 		const day = String(date.getDate()).padStart(2, "0");
@@ -89,7 +117,11 @@ export const Party = ({
 		const hours = String(date.getHours()).padStart(2, "0");
 		const minutes = String(date.getMinutes()).padStart(2, "0");
 
-		return `${day}/${month}/${year} - ${hours}:${minutes}`;
+		if (difference <= 0) {
+			return "expired";
+		} else {
+			return `${day}/${month}/${year} - ${hours}:${minutes}`;
+		}
 	};
 
 	return (
@@ -104,9 +136,12 @@ export const Party = ({
 						className="absolute -z-1 w-full -top-10 object-cover opacity-30"
 					/>
 				</div>
-				<div className="tag-wrapper flex gap-2 mx-3 mt-2">
-					<PartyTag title={objective?.category}></PartyTag>
-					<PartyTag title={server}></PartyTag>
+				<div className="tag-wrapper flex items-center justify-between mx-3 mt-2">
+					<div className="flex gap-2">
+						<PartyTag title={objective?.category}></PartyTag>
+						<PartyTag title={server}></PartyTag>
+					</div>
+					{partyStyle === "created-party" && <X className="size-5" onClick={onDeletePartyClick}></X>}
 				</div>
 				<h2 className="font-bold text-xl mx-3 my-0">{objective?.label}</h2>
 				<p className="text-sm mx-3">{`by ${partyCreator}`}</p>

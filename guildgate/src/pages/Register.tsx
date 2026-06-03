@@ -1,30 +1,17 @@
-import { useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { AvatarSelector } from "../components/AvatarSelector";
 import { Button } from "../components/Button";
 import { ClassSelector } from "../components/ClassSelector";
 import { FooterCopyright } from "../components/FooterCopyright";
 import { Input } from "../components/Input";
 import { Select } from "../components/Select";
-import { FormErrorPopup } from "../components/FormErrorPopup";
-
-import mockUsers from "../data/mockUsers.json";
+import { UserContext } from "../context/UserContext";
 
 export function Register() {
 	const DEFAULT_AVATAR = "avatar-1";
 	const DEFAULT_CLASS = "warrior";
 
-	const [popupVisible, setPopupVisible] = useState(false);
-	const [popupMessage, setPopupMessage] = useState("");
-
-	const [users, setUsers] = useState(() => {
-		const savedUsers = localStorage.getItem("users");
-		if (savedUsers) {
-			return JSON.parse(savedUsers);
-		} else {
-			localStorage.setItem("users", JSON.stringify(mockUsers));
-			return mockUsers;
-		}
-	});
+	const { registerUser } = useContext(UserContext);
 
 	const [user, setUser] = useState({
 		nickname: "",
@@ -33,14 +20,14 @@ export function Register() {
 		avatar: DEFAULT_AVATAR,
 		class: DEFAULT_CLASS,
 		password: "",
-		"confirm-password": "",
+		confirmPassword: "",
 	});
 
-	function handleChange(event: any) {
+	function handleChange(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
 		const { name, value } = event.target;
 
-		// Verifica dei 18 caratteri massimi per il nickname
-		if (name === "nickname" && value.length > 18) {
+		// Verifica dei 16 caratteri massimi per il nickname
+		if (name === "nickname" && value.length > 16) {
 			return;
 		}
 
@@ -84,46 +71,10 @@ export function Register() {
 		}));
 	}
 
-	function handleRegistrati(event: any) {
+	function handleRegister(event: React.SubmitEvent<HTMLFormElement>) {
 		event.preventDefault();
-		const userExists = users.find((u: any) => u.nickname === user.nickname);
-		if (userExists) {
-			setPopupVisible(true);
-			setPopupMessage("This nickname already exists.");
-			// Svuota nickname e password se l'utente esiste
-			setUser((prev) => ({
-				...prev,
-				nickname: "",
-				password: "",
-				"confirm-password": "",
-			}));
-		} else if (user.nickname === "") {
-			setPopupVisible(true);
-			setPopupMessage("Please insert your nickname.");
-		} else if (user.level === "") {
-			setPopupVisible(true);
-			setPopupMessage("Please insert your level.");
-		} else if (user.server === "") {
-			setPopupVisible(true);
-			setPopupMessage("Please select a server.");
-		} else if (user.password === "" || user["confirm-password"] === "") {
-			setPopupVisible(true);
-			setPopupMessage("Password can't be empty.");
-		} else if (user.password != user["confirm-password"]) {
-			setPopupVisible(true);
-			setPopupMessage("Passwords do not match.");
-		} else {
-			// Toglie confirm-password dallo user nel localStorage
-			const { "confirm-password": _, ...cleanUser } = user;
-			const updatedUsers = [...users, cleanUser];
-			setUsers(updatedUsers);
-			// Qui ci sarà il reindirizzamento alla pagina di login in caso di registrazione avvenuta con successo
-		}
+		registerUser(user);
 	}
-
-	useEffect(() => {
-		localStorage.setItem("users", JSON.stringify(users));
-	}, [users]);
 
 	return (
 		<div className="register-container flex flex-col items-center gap-4 overflow-x-hidden">
@@ -139,7 +90,7 @@ export function Register() {
 			</div>
 			<h1 className="text-lg font-bold">Join the Adventure</h1>
 			<form
-				onSubmit={handleRegistrati}
+				onSubmit={handleRegister}
 				className="register-form flex flex-col gap-3 border rounded-md mx-5 py-4 px-4 opacity-80"
 			>
 				<Input
@@ -148,7 +99,7 @@ export function Register() {
 					placeholder="Insert your nickname"
 					onChange={handleChange}
 					value={user.nickname}
-					maxLength={18}
+					maxLength={16}
 					showCounter={true}
 				></Input>
 				<div className="form-wrapper flex gap-2">
@@ -177,22 +128,17 @@ export function Register() {
 				<Input
 					label="Confirm Password"
 					type="password"
-					name="confirm-password"
+					name="confirmPassword"
 					placeholder="Confirm your password"
 					showPasswordToggle
 					onChange={handleChange}
-					value={user["confirm-password"]}
+					value={user.confirmPassword}
 				></Input>
 				<Button text="Register" type="submit" buttonStyle="primaryButton" className="mt-1"></Button>
 			</form>
 			<p className="text-sm">
 				Already registered? <a className="sign-in-redirect font-bold">Sign In</a>
 			</p>
-			<FormErrorPopup
-				isOpen={popupVisible}
-				errorMessage={popupMessage}
-				onClose={() => setPopupVisible(false)}
-			></FormErrorPopup>
 			<FooterCopyright></FooterCopyright>
 		</div>
 	);

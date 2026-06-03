@@ -1,0 +1,62 @@
+[
+	{
+		"id": 1,
+		"objective": {
+			"value": "dwarves",
+			"label": "Dwarves' Mine",
+			"category": "Dungeon",
+			"imageUrl": "src/assets/objectives-images/dwarves.jpg",
+			"alt": "Dwarves Image"
+		},
+		"server": "europe",
+		"partyCreator": "XenonBlade",
+		"levelRequirement": 50,
+		"joinedClasses": ["warrior", "tank", "druid"],
+		"partyDate": "2026-06-15T20:00:00.000Z"
+	},
+	{
+		"id": 2,
+		"objective": {
+			"value": "falkor",
+			"label": "Falkor the Worldbreaker",
+			"category": "Boss",
+			"imageUrl": "/src/assets/objectives-images/falkor.png",
+			"alt": "Falkor Image"
+		},
+		"server": "europe",
+		"partyCreator": "ShadowNinja",
+		"levelRequirement": "80",
+		"joinedClasses": ["assassin", "archer"],
+		"partyDate": "2026-07-30T15:30:00.000Z"
+	},
+	{
+		"id": 3,
+		"objective": {
+			"value": "sunken",
+			"label": "Sunken Keep",
+			"category": "Dungeon",
+			"imageUrl": "src/assets/objectives-images/sunken.jpg",
+			"alt": "Sunken Keep Image"
+		},
+		"server": "europe",
+		"partyCreator": "HealBot99",
+		"levelRequirement": 25,
+		"joinedClasses": ["druid"],
+		"partyDate": "2026-06-22T18:00:00.000Z"
+	},
+	{
+		"id": 4,
+		"objective": {
+			"value": "malakor",
+			"label": "Malakor the Voidborn",
+			"category": "Boss",
+			"imageUrl": "/src/assets/objectives-images/malakor.jpg",
+			"alt": "Malakor Image"
+		},
+		"server": "america",
+		"partyCreator": "IronWall",
+		"levelRequirement": 10,
+		"joinedClasses": ["warrior", "tank", "assassin", "archer", "druid"],
+		"partyDate": "2026-06-28T10:00:00.000Z"
+	}
+]
