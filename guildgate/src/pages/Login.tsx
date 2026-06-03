@@ -1,53 +1,29 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import { FooterCopyright } from "../components/FooterCopyright";
-import { FormErrorPopup } from "../components/FormErrorPopup";
-
-import mockUsers from "../data/mockUsers.json";
+import { UserContext } from "../context/UserContext";
 
 export function Login() {
-	const [popupVisible, setPopupVisible] = useState(false);
-	const [popupMessage, setPopupMessage] = useState("");
+	const { loginUser } = useContext(UserContext);
 
 	const [user, setUser] = useState({
 		nickname: "",
 		password: "",
 	});
 
-	const [users, setUsers] = useState(() => {
-		const savedUsers = localStorage.getItem("users");
-		if (savedUsers) {
-			return JSON.parse(savedUsers);
-		} else {
-			localStorage.setItem("users", JSON.stringify(mockUsers));
-			return mockUsers;
-		}
-	});
-
-	function handleChange(event: any) {
+	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
 		const { name, value } = event.target;
-		// Verifica dei 18 caratteri massimi per il nickname
-		if (name === "nickname" && value.length > 18) {
-			return;
-		}
+
 		setUser((prev) => ({
 			...prev,
 			[name]: value,
 		}));
 	}
 
-	function handleLogin(event: any) {
-		// Temporaneo
+	function handleLogin(event: React.SubmitEvent<HTMLFormElement>) {
 		event.preventDefault();
-		const userExists = users.find((u: any) => u.nickname === user.nickname && u.password === user.password);
-		if (userExists) {
-			setPopupVisible(true);
-			setPopupMessage("Login successful.");
-		} else {
-			setPopupVisible(true);
-			setPopupMessage("The nickname or password you entered is incorrect.");
-		}
+		loginUser(user);
 	}
 
 	return (
@@ -78,8 +54,6 @@ export function Login() {
 							placeholder="Insert your nickname"
 							onChange={handleChange}
 							value={user.nickname}
-							maxLength={18}
-							showCounter={true}
 						></Input>
 						<Input
 							label="Password"
@@ -100,11 +74,6 @@ export function Login() {
 					<img src="/src/assets/logo/login-footer-icon.png" alt="Footer logo" />
 					<FooterCopyright></FooterCopyright>
 				</div>
-				<FormErrorPopup
-					isOpen={popupVisible}
-					errorMessage={popupMessage}
-					onClose={() => setPopupVisible(false)}
-				></FormErrorPopup>
 			</div>
 		</div>
 	);

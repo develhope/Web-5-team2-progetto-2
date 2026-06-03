@@ -5,7 +5,8 @@
 		"server": "europe",
 		"avatar": "avatar-2",
 		"class": "tank",
-		"password": "password_1"
+		"password": "password_1",
+		"joinedPartiesIDs": []
 	},
 	{
 		"nickname": "HealerQueen_Ly",
@@ -13,7 +14,8 @@
 		"server": "america",
 		"avatar": "avatar-1",
 		"class": "druid",
-		"password": "password_2"
+		"password": "password_2",
+		"joinedPartiesIDs": []
 	},
 	{
 		"nickname": "xX_DarkMage_Xx",
@@ -21,7 +23,8 @@
 		"server": "europe",
 		"avatar": "avatar-4",
 		"class": "warrior",
-		"password": "hashed_password_3"
+		"password": "hashed_password_3",
+		"joinedPartiesIDs": []
 	},
 	{
 		"nickname": "IronFistGareth",
@@ -29,6 +32,7 @@
 		"server": "europe",
 		"avatar": "avatar-3",
 		"class": "assassin",
-		"password": "hashed_password_4"
+		"password": "hashed_password_4",
+		"joinedPartiesIDs": []
 	}
 ]

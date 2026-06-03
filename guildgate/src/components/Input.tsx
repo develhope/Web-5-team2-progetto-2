@@ -33,7 +33,7 @@ export const Input = ({
 			case "nickname":
 				return <User className={iconClass} />;
 			case "password":
-			case "confirm-password":
+			case "confirmPassword":
 				return <Lock className={iconClass} />;
 			case "level":
 				return <Star className={iconClass} />;
