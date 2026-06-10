@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AvatarSelector } from "../components/AvatarSelector";
 import { Button } from "../components/Button";
 import { ClassSelector } from "../components/ClassSelector";
-import { FooterCopyright } from "../components/FooterCopyright";
 import { Input } from "../components/Input";
 import { Select } from "../components/Select";
 import { UserContext } from "../context/UserContext";
@@ -12,6 +12,8 @@ export function Register() {
 	const DEFAULT_CLASS = "warrior";
 
 	const { registerUser } = useContext(UserContext);
+
+	const navigate = useNavigate();
 
 	const [user, setUser] = useState({
 		nickname: "",
@@ -137,9 +139,14 @@ export function Register() {
 				<Button text="Register" type="submit" buttonStyle="primaryButton" className="mt-1"></Button>
 			</form>
 			<p className="text-sm">
-				Already registered? <a className="sign-in-redirect font-bold">Sign In</a>
+				Already registered?{" "}
+				<button className="sign-in-redirect font-bold" onClick={() => navigate("/login")}>
+					Sign In
+				</button>
 			</p>
-			<FooterCopyright></FooterCopyright>
+			<div className="flex flex-col items-center gap-20 mt-10 mb-2">
+				<img src="/src/assets/logo/login-footer-icon.png" alt="Footer logo" />
+			</div>
 		</div>
 	);
 }

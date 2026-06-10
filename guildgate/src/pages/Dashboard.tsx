@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { ToastContainer } from "react-toastify";
 import { UserContext } from "../context/UserContext";
 import { Input } from "../components/Input";
 import { Select } from "../components/Select";
@@ -7,7 +6,6 @@ import { AvatarSelector } from "../components/AvatarSelector";
 import { ClassSelector } from "../components/ClassSelector";
 import { Button } from "../components/Button";
 import { Party } from "../components/Party";
-import { FooterCopyright } from "../components/FooterCopyright";
 import { User, Users } from "lucide-react";
 
 export function Dashboard() {
@@ -391,10 +389,6 @@ export function Dashboard() {
 							></Party>
 						))}
 				</div>
-				<div className="flex flex-col items-center mt-2 gap-10 mb-2">
-					<img src="/src/assets/logo/login-footer-icon.png" alt="Footer logo" />
-					<FooterCopyright></FooterCopyright>
-				</div>
 			</div>
 
 			{
@@ -590,7 +584,9 @@ export function Dashboard() {
 						}
 					})()
 			}
-			<ToastContainer limit={2}></ToastContainer>
+			<div className="flex flex-col items-center gap-20 mt-10 mb-2">
+				<img src="/src/assets/logo/login-footer-icon.png" alt="Footer logo" />
+			</div>
 		</div>
 	);
 }

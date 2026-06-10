@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
-import { FooterCopyright } from "../components/FooterCopyright";
 import { UserContext } from "../context/UserContext";
 
 export function Login() {
 	const { loginUser } = useContext(UserContext);
+	const navigate = useNavigate();
 
 	const [user, setUser] = useState({
 		nickname: "",
@@ -67,12 +68,14 @@ export function Login() {
 						<Button text="Sign In" type="submit" buttonStyle="primaryButton" className="mt-1"></Button>
 					</form>
 					<p className="text-sm mb-10">
-						No account yet? <a className="register-redirect font-bold">Register</a>
+						No account yet?{" "}
+						<button className="register-redirect font-bold" onClick={() => navigate("/register")}>
+							Register
+						</button>
 					</p>
 				</div>
 				<div className="flex flex-col items-center gap-20 mb-2">
 					<img src="/src/assets/logo/login-footer-icon.png" alt="Footer logo" />
-					<FooterCopyright></FooterCopyright>
 				</div>
 			</div>
 		</div>

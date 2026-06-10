@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, type ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import type { ToastContentProps } from "react-toastify";
 import mockUsers from "../data/mockUsers.json";
@@ -32,6 +33,8 @@ interface Party {
 export const UserContext = createContext<any>({} as any);
 
 export function UserProvider({ children }: { children: ReactNode }) {
+	const navigate = useNavigate();
+
 	const [users, setUsers] = useState(() => {
 		const savedUsers = localStorage.getItem("users");
 		if (savedUsers) {
@@ -166,7 +169,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 			};
 			const updatedUsers = [...users, newUser];
 			setUsers(updatedUsers);
-			// Qui ci sarà il reindirizzamento alla pagina di login in caso di registrazione avvenuta con successo
+			navigate("/");
 			displayToast(TOAST_TITLES.Success, "Your registration is confirmed.");
 		}
 	}
@@ -178,6 +181,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 			setLoggedIn(true);
 			localStorage.setItem("user", JSON.stringify(userExists));
 			setUserLogged(userExists);
+			navigate("/dashboard");
 			displayToast(TOAST_TITLES.Success, "Your are now logged in.");
 		} else {
 			displayToast(TOAST_TITLES.Error, "The nickname or password you entered is incorrect.");
@@ -222,6 +226,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
 			setLoggedIn(false);
 			localStorage.removeItem("user");
 			setUserLogged(null);
+			navigate("/");
+			displayToast(TOAST_TITLES.Success, "You are now logged out.");
 		});
 	}
 
