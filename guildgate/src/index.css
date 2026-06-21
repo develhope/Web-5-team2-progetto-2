@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap");
+@import "tailwindcss";
+
+:root {
+	--font-cinzel: "Cinzel", serif;
+	--font-weight-normal: 400;
+	--font-weight-bold: 700;
+
+	--color-primary: #bc9156;
+	--color-green-accent: #86ec90;
+	--color-background: #0c1116;
+	--color-accent-background: #10151b;
+	--color-form-input-background: #131920;
+
+	--color-text-normal: #f9f7f2;
+	--color-text-subtle: #b4b4b4;
+	--color-text-button: #0c1116;
+	--color-text-placeholder: #f9f7f280;
+
+	--color-border-normal: #414141;
+	--color-border-subtle: #aaaaaa;
+}
+
+body {
+	font-family: var(--font-cinzel);
+	background-color: var(--color-background);
+	color: var(--color-text-normal);
+	margin: 0;
+	box-sizing: border-box;
+}

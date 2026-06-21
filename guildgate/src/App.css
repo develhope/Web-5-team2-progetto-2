@@ -1,0 +1,159 @@
+@import "./index.css";
+@import "tailwindcss";
+
+.input-field,
+.select-field,
+.class-selector-unchecked {
+	background-color: var(--color-form-input-background);
+	border-color: var(--color-border-normal);
+}
+
+.register-form,
+.login-form {
+	background-color: var(--color-accent-background);
+	border-color: var(--color-border-normal);
+}
+
+.sign-in-redirect,
+.register-redirect {
+	color: var(--color-primary);
+}
+
+.error-popup-container,
+.dashboard-popup-container {
+	background-color: var(--color-accent-background);
+	border-color: var(--color-primary);
+}
+
+.party-bottom-area {
+	background-color: var(--color-accent-background);
+}
+
+.user-area {
+	background-color: #10151bcc;
+}
+
+.user-button {
+	color: var(--color-primary);
+}
+
+.joined-party,
+.created-party,
+.class-slots img {
+	border-color: var(--color-primary);
+}
+
+.available-party,
+.unavailable-party {
+	border-color: var(--color-border-normal);
+}
+
+.level-req,
+.slots-number {
+	color: var(--color-green-accent);
+}
+
+.input-icon-container,
+.input-password-icon,
+.select-icon-container,
+.select-arrow-container,
+.class-selector-unchecked,
+.footer-app-name,
+.footer-app-version {
+	color: var(--color-text-placeholder);
+}
+
+.class-selector-checked {
+	border-color: var(--color-primary);
+	color: var(--color-primary);
+}
+
+/* Per nascondere le icone predefinite di date e time */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-inner-spin-button,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-inner-spin-button {
+	display: none;
+	-webkit-appearance: none;
+}
+
+/* Per nascondere l'icona predefinita del campo select */
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-image: none;
+}
+
+.party-tag {
+	border-color: var(--color-border-subtle);
+}
+
+.primaryButton {
+	background-color: var(--color-primary);
+	color: var(--color-text-button);
+	border-color: var(--color-border-subtle);
+}
+
+.secondaryButton {
+	background-color: var(--color-background);
+	border-color: var(--color-border-subtle);
+}
+
+.Toastify__toast--default {
+	font-family: var(--font-cinzel) !important;
+	background-color: var(--color-accent-background) !important;
+	color: var(--color-text-normal) !important;
+}
+
+.Toastify__close-button--light {
+	color: var(--color-text-normal) !important;
+}
+
+.Toastify__progress-bar-theme--light {
+	background-image: none !important;
+	background-color: var(--color-primary) !important;
+}
+
+.server-dot-container {
+	position: relative;
+}
+
+.dot {
+	width: 6px;
+	height: 6px;
+	background-color: var(--color-green-accent);
+	border-radius: 50%;
+}
+
+.pulsing-ring {
+	position: absolute;
+	top: -6px;
+	right: -6px;
+	border: 3px solid var(--color-green-accent);
+	border-radius: 30px;
+	height: 18px;
+	width: 18px;
+	animation: pulsate 2.4s ease-out;
+	animation-delay: 3s;
+	animation-iteration-count: infinite;
+	opacity: 0;
+}
+
+@keyframes pulsate {
+	0% {
+		transform: scale(0.1, 0.1);
+		opacity: 0;
+	}
+	25% {
+		opacity: 0.8;
+	}
+	50% {
+		transform: scale(1, 1);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1, 1);
+		opacity: 0;
+	}
+}

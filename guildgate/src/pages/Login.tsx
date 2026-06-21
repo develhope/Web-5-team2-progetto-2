@@ -1,0 +1,83 @@
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Input } from "../components/Input";
+import { Button } from "../components/Button";
+import { UserContext } from "../context/UserContext";
+
+export function Login() {
+	const { loginUser } = useContext(UserContext);
+	const navigate = useNavigate();
+
+	const [user, setUser] = useState({
+		nickname: "",
+		password: "",
+	});
+
+	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+		const { name, value } = event.target;
+
+		setUser((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	}
+
+	function handleLogin(event: React.SubmitEvent<HTMLFormElement>) {
+		event.preventDefault();
+		loginUser(user);
+	}
+
+	return (
+		<div className="overflow-x-hidden">
+			<div className="bg-image-container relative w-full">
+				<img
+					src="/src/assets/bg-images/login-bg-image.png"
+					alt="Background Image"
+					className="absolute min-w-150 -z-1 opacity-40 object-cover mask-image-[linear-gradient(to_bottom,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_100%)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_100%)]"
+				/>
+			</div>
+			<div className="login-container flex flex-col items-center justify-between h-screen gap-4">
+				<div className="logo-container mt-8">
+					<img src="/src/assets/logo/guildgate.png" alt="GuildGate Logo" className="w-90" />
+				</div>
+				<div className="flex flex-col items-center gap-6">
+					<div className="flex flex-col items-center gap-1">
+						<h1 className="text-lg font-bold">Join the Adventure</h1>
+						<p className="text-sm">Find your Party. Fight Together</p>
+					</div>
+					<form
+						onSubmit={handleLogin}
+						className="login-form flex flex-col gap-6 border rounded-md mx-5 py-4 px-4 opacity-80"
+					>
+						<Input
+							label="Nickname"
+							name="nickname"
+							placeholder="Insert your nickname"
+							onChange={handleChange}
+							value={user.nickname}
+						></Input>
+						<Input
+							label="Password"
+							type="password"
+							name="password"
+							placeholder="Insert your password"
+							showPasswordToggle
+							onChange={handleChange}
+							value={user.password}
+						></Input>
+						<Button text="Sign In" type="submit" buttonStyle="primaryButton" className="mt-1"></Button>
+					</form>
+					<p className="text-sm mb-10">
+						No account yet?{" "}
+						<button className="register-redirect font-bold" onClick={() => navigate("/register")}>
+							Register
+						</button>
+					</p>
+				</div>
+				<div className="flex flex-col items-center gap-20 mb-2">
+					<img src="/src/assets/logo/login-footer-icon.png" alt="Footer logo" />
+				</div>
+			</div>
+		</div>
+	);
+}
