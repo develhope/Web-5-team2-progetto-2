@@ -12,7 +12,7 @@
 		"partyCreator": "XenonBlade",
 		"levelRequirement": 50,
 		"joinedClasses": ["warrior", "tank", "druid"],
-		"partyDate": "2026-06-15T20:00:00.000Z"
+		"partyDate": "2026-07-15T20:00:00.000Z"
 	},
 	{
 		"id": 2,
@@ -42,7 +42,7 @@
 		"partyCreator": "HealBot99",
 		"levelRequirement": 25,
 		"joinedClasses": ["druid"],
-		"partyDate": "2026-06-22T18:00:00.000Z"
+		"partyDate": "2026-06-24T18:00:00.000Z"
 	},
 	{
 		"id": 4,
